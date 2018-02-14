@@ -1,0 +1,59 @@
+plugins {
+  id 'io.franzbecker.gradle-lombok' version '1.11'
+  id 'java'
+  id 'application'
+}
+
+group 'org.csgames'
+version '0.1-SNAPSHOT'
+
+sourceCompatibility = 1.8
+mainClassName = "org.csgames.spaceship.control.ui.rest.SpaceshipControlRestApi"
+
+configurations.all {
+  resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+  resolutionStrategy.cacheDynamicVersionsFor 0, 'seconds'
+}
+
+repositories {
+  mavenCentral()
+  mavenLocal()
+  jcenter()
+  maven {
+    url "https://dl.bintray.com/csgames/spaceship"
+  }
+}
+
+dependencies {
+  compile 'org.slf4j:slf4j-simple:1.7.25'
+  compile 'com.sparkjava:spark-core:2.7.1'
+  compile 'com.google.code.gson:gson:2.8.2'
+  compile 'org.apache.commons:commons-lang3:3.7'
+
+  compile 'org.csgames:spaceship-sdk:0.0.+'
+
+  testCompile 'junit:junit:4.12'
+  testCompile 'org.mockito:mockito-core:2.15.0'
+  testCompile 'com.google.truth:truth:0.39'
+  testCompile 'com.google.truth.extensions:truth-java8-extension:0.39'
+}
+
+task accept(type: JavaExec) {
+  main = 'org.csgames.spaceship.control.accept.SpaceshipControlAccTests'
+  classpath sourceSets.main.runtimeClasspath
+
+  systemProperties System.getProperties()
+
+  systemProperty 'context', System.getProperty('context', 'ACCEPTANCE_TESTS')
+
+  systemProperty 'teamToken', System.getProperty('teamToken', System.getenv('TEAM_TOKEN'))
+
+  def mongoHost = System.getenv('MONGO_HOST') ?: 'localhost'
+  systemProperty 'mongoHost', System.getProperty('mongoHost', mongoHost)
+
+  def mongoPort = System.getenv('MONGO_POST') ?: '27017'
+  systemProperty 'mongoPort', System.getProperty('mongoPort', mongoPort)
+
+  def mongoDatabase = System.getenv('MONGO_DATABASE') ?: 'spaceship'
+  systemProperty 'mongoDatabase', System.getProperty('mongoDatabase', mongoDatabase)
+}
