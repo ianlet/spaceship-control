@@ -1,0 +1,14 @@
+{
+  "name": "Ingénierie Logicielle",
+  "description": "Tests automatisés, intégration continue, déploiement en continu, produit toujours livrable, DDD, Clean Architecture... Tous ces mots clefs semblent très populaires dans vos différentes cultures. Mais, maîtrisez-les vous vraiment?",
+  "participants": 3,
+  "languages": "Java",
+  "weighting": "TBA"
+}
+{
+  "name": "Team Software Engineering",
+  "description": "Automated tests, continuous integration, continuous deployment, shippable product, DDD, Clean Architecture... So many buzzwords we frequently hear from your different cultures. But, do you really master them?",
+  "participants": 3,
+  "languages": "Java",
+  "weighting": "TBA"
+}
