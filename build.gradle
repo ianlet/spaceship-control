@@ -23,10 +23,25 @@ dependencies {
   compile 'com.sparkjava:spark-core:2.7.1'
   compile 'com.google.code.gson:gson:2.8.2'
 
-  compile 'org.csgames:spaceship-sdk:0.0.1'
+  compile 'org.csgames:spaceship-sdk:0.0.+'
 
   testCompile 'junit:junit:4.12'
   testCompile 'org.mockito:mockito-core:2.15.0'
   testCompile 'com.google.truth:truth:0.39'
   testCompile 'com.google.truth.extensions:truth-java8-extension:0.39'
+}
+
+task accept(type: JavaExec) {
+  main = 'org.csgames.spaceship.control.accept.SpaceshipControlAccTests'
+  classpath sourceSets.main.runtimeClasspath
+
+  systemProperties System.getProperties()
+
+  systemProperty 'context', System.getProperty('context', 'ACCEPTANCE_TESTS')
+
+  systemProperty 'teamToken', System.getProperty('teamToken')
+
+  systemProperty 'mongoHost', System.getProperty('mongoHost', 'localhost')
+  systemProperty 'mongoPort', System.getProperty('mongoPort', '27017')
+  systemProperty 'mongoDatabase', System.getProperty('mongoDatabase', 'spaceship')
 }
