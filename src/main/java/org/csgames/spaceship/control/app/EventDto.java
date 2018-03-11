@@ -1,8 +1,10 @@
 package org.csgames.spaceship.control.app;
 
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 @EqualsAndHashCode
+@ToString
 public class EventDto {
 
   public final EventType type;
