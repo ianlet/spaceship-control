@@ -13,6 +13,7 @@ mainClassName = "org.csgames.spaceship.control.ui.rest.SpaceshipControlRestApi"
 repositories {
   mavenCentral()
   mavenLocal()
+  jcenter()
   maven {
     url "https://dl.bintray.com/csgames/spaceship"
   }
