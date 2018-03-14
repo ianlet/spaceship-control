@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  accept:
+    build: .
+    container_name: 'spaceship-control'
+    env_file:
+      - spaceship.env
+    environment:
+      - MONGO_HOST=mongo
+    volumes:
+      - .:/home/gradle
+    links:
+      - mongo:mongo
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017

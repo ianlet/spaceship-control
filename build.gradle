@@ -40,9 +40,14 @@ task accept(type: JavaExec) {
 
   systemProperty 'context', System.getProperty('context', 'ACCEPTANCE_TESTS')
 
-  systemProperty 'teamToken', System.getProperty('teamToken')
+  systemProperty 'teamToken', System.getProperty('teamToken', System.getenv('TEAM_TOKEN'))
 
-  systemProperty 'mongoHost', System.getProperty('mongoHost', 'localhost')
-  systemProperty 'mongoPort', System.getProperty('mongoPort', '27017')
-  systemProperty 'mongoDatabase', System.getProperty('mongoDatabase', 'spaceship')
+  def mongoHost = System.getenv('MONGO_HOST') ?: 'localhost'
+  systemProperty 'mongoHost', System.getProperty('mongoHost', mongoHost)
+
+  def mongoPort = System.getenv('MONGO_POST') ?: '27017'
+  systemProperty 'mongoPort', System.getProperty('mongoPort', mongoPort)
+
+  def mongoDatabase = System.getenv('MONGO_DATABASE') ?: 'spaceship'
+  systemProperty 'mongoDatabase', System.getProperty('mongoDatabase', mongoDatabase)
 }
