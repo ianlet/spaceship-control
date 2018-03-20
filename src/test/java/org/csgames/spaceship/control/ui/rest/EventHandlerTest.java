@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 
 import org.csgames.spaceship.control.app.EventAppService;
 import org.csgames.spaceship.control.app.EventDto;
-import org.csgames.spaceship.control.app.EventType;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,10 +16,11 @@ import static org.mockito.Mockito.verify;
 
 public class EventHandlerTest {
 
+  private static final String AN_EVENT_TYPE = "LOCATION_CHANGED";
   private static final String AN_EVENT_SOURCE = "team-01";
   private static final String AN_EVENT_PAYLOAD = "64.357568,21.593832";
 
-  private final EventDto anEvent = new EventDto(EventType.LOCATION_CHANGED, AN_EVENT_SOURCE, AN_EVENT_PAYLOAD);
+  private final EventDto anEvent = new EventDto(AN_EVENT_TYPE, AN_EVENT_SOURCE, AN_EVENT_PAYLOAD);
 
   private Gson gson;
   private EventAppService eventAppService;

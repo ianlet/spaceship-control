@@ -7,11 +7,11 @@ import lombok.ToString;
 @ToString
 public class EventDto {
 
-  public final EventType type;
+  public final String type;
   public final String source;
   public final String payload;
 
-  public EventDto(EventType type, String source, String payload) {
+  public EventDto(String type, String source, String payload) {
     this.type = type;
     this.source = source;
     this.payload = payload;
