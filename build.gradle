@@ -10,6 +10,11 @@ version '0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 mainClassName = "org.csgames.spaceship.control.ui.rest.SpaceshipControlRestApi"
 
+configurations.all {
+  resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+  resolutionStrategy.cacheDynamicVersionsFor 0, 'seconds'
+}
+
 repositories {
   mavenCentral()
   mavenLocal()
